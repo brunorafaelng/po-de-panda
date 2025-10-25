@@ -1,0 +1,26 @@
+[workspace]
+channels = ["conda-forge"]
+name = "po-de-panda"
+platforms = ["linux-64"]
+version = "0.1.0"
+
+[environments]
+# Define o ambiente 'prod' (produção) como "vazio",
+# ou seja, ele NÃO inclui a feature 'dev'.
+prod = { features = [] }
+
+# Define o ambiente 'default' (padrão)
+# para incluir a "feature" 'dev'.
+default = { features = ["dev"] }
+
+[tasks]
+# Nosso novo atalho (tarefa) se chamará 'check-pandas'
+check-pandas = "python -c 'import pandas; print(pandas.__version__)'"
+
+[dependencies]
+python = ">=3.14.0,<3.15"
+nodejs = ">=24.9.0,<24.10"
+
+[feature.dev.dependencies]
+ruff = "*"
+prettier = ">=3.6.2,<4"
