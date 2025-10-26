@@ -13,10 +13,6 @@ prod = { features = [] }
 # para incluir a "feature" 'dev'.
 default = { features = ["dev"] }
 
-[tasks]
-# Nosso novo atalho (tarefa) se chamará 'check-pandas'
-check-pandas = "python -c 'import pandas; print(pandas.__version__)'"
-
 [dependencies]
 python = ">=3.14.0,<3.15"
 nodejs = ">=24.9.0,<24.10"
