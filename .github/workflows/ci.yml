@@ -12,12 +12,12 @@ on:
 
 # 2. TAREFAS: O que o robô deve fazer?
 jobs:
-  # Nome da tarefa (pode ser qualquer nome)
+  # 2.1 Nome de uma das tarefa possíveis (pode ser qualquer nome)
   lint-and-format-check:
-    # 3. MÁQUINA: Qual SO o robô deve usar?
+    # 2.1.1 MÁQUINA: Qual SO o robô deve usar?
     runs-on: ubuntu-latest # Um PC com Ubuntu na nuvem
 
-    # 4. PASSOS: A "receita"
+    # 2.1.2 PASSOS: A "receita"
     steps:
       # Passo 1: Baixar o código do seu GitHub para a máquina do robô
       - name: 1. Baixar o Código
