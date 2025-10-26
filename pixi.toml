@@ -20,3 +20,9 @@ nodejs = ">=24.9.0,<24.10"
 [feature.dev.dependencies]
 ruff = "*"
 prettier = ">=3.6.2,<4"
+
+[tasks]
+# Atalho para "lintar" (verificar) o Python
+lint = "ruff check ."
+# Atalho para "formatar" (corrigir) o JavaScript
+format = "prettier --write ."
