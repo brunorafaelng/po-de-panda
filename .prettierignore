@@ -1,0 +1,7 @@
+# Diga ao Prettier para NUNCA tocar nestes arquivos/pastas
+
+# Python
+*.py
+
+# Ambientes (que já estão no .gitignore, mas é bom garantir)
+.pixi/

@@ -8,7 +8,6 @@ version = "1.0.0"
 # Define o ambiente 'prod' (produção) como "vazio",
 # ou seja, ele NÃO inclui a feature 'dev'.
 prod = { features = [] }
-
 # Define o ambiente 'default' (padrão)
 # para incluir a "feature" 'dev'.
 default = { features = ["dev"] }
@@ -22,7 +21,11 @@ ruff = "*"
 prettier = ">=3.6.2,<4"
 
 [tasks]
-# Atalho para "lintar" (verificar) o Python
-lint = "ruff check ."
-# Atalho para "formatar" (corrigir) o JavaScript
-format = "prettier --write ."
+# --- Para uso do Desenvolvedor (local) ---
+# Formata Python E todo o resto
+format = "ruff format . && prettier --write ."
+# --- Para uso do Robô (CI) --- #
+# Verifica o lint E o formato do Python
+lint-py = "ruff check ."
+# Verifica o formato de todo o resto (sem escrever)
+lint-js = "prettier --check ."

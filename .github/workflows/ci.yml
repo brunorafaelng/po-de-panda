@@ -1,0 +1,41 @@
+# Nome do nosso "Robô" (Workflow)
+name: CI (Lint e Formato)
+
+# 1. GATILHO: Quando o robô deve rodar?
+#    - Em todo 'push' para o 'main'
+#    - Em todo 'Pull Request' (PR) para o 'main'
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+# 2. TAREFAS: O que o robô deve fazer?
+jobs:
+  # 2.1 Nome de uma das tarefa possíveis (pode ser qualquer nome)
+  lint-and-format-check:
+    # 2.1.1 MÁQUINA: Qual SO o robô deve usar?
+    runs-on: ubuntu-latest # Um PC com Ubuntu na nuvem
+
+    # 2.1.2 PASSOS: A "receita"
+    steps:
+      # Passo 1: Baixar o código do seu GitHub para a máquina do robô
+      - name: 1. Baixar o Código
+        uses: actions/checkout@v4
+
+      # Passo 2: Instalar o Pixi na máquina do robô
+      - name: 2. Instalar Pixi
+        uses: prefix-dev/setup-pixi@v0
+
+      # Passo 3: Instalar as dependências (Python, Node, Ruff, Prettier)
+      #          Usando o '--frozen' garantimos que ele use o 'pixi.lock'
+      - name: 3. Instalar Dependências (do pixi.lock)
+        run: pixi install --frozen
+
+      # Passo 4: Rodar nosso teste de LINT do Python (o ruff)
+      - name: 4. Verificar Lint (Python)
+        run: pixi run lint-py
+
+      # Passo 5: Rodar nosso teste de FORMATO (Prettier, JS, MD, etc.)
+      - name: 5. Verificar Formato (JS/MD/etc)
+        run: pixi run lint-js
