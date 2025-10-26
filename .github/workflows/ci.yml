@@ -25,7 +25,7 @@ jobs:
 
       # Passo 2: Instalar o Pixi na máquina do robô
       - name: 2. Instalar Pixi
-        uses: prefix-dev/setup-pixi@v0.10
+        uses: prefix-dev/setup-pixi@v0
 
       # Passo 3: Instalar as dependências (Python, Node, Ruff, Prettier)
       #          Usando o '--frozen' garantimos que ele use o 'pixi.lock'
